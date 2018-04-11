@@ -12,7 +12,7 @@
 		<div class="g-signin2" data-onsuccess="onSignIn"></div>
 	</div>
 	<!-- Template for when the user is signed-in -->
-	<div class="signed-in">
+	<div class="signed-in" style="display: none;">
 		<h1>Name</h1>
 		<h3 class="user-name"></h3>
 		<h1>Email:</h1>
@@ -23,7 +23,7 @@
 	</div>
 	
 	<!-- Template for when there is an error in the API -->
-	<div class="error">
+	<div class="error" style="display: none;">
 		<h3>There was an error loading the OAuthAPI</h3>
 	</div>
 	<!-- Adding JQuery -->
@@ -57,21 +57,21 @@
 
 	  		// Checking if the API is working 
 	  		$(document).ready(function() {
-	  			if ($('meta')[0].content != '1063496487067-u6dorc4qjgmqh80dbabb1cjgnagos01q.apps.googleusercontent.com') {
-	  				alert('This sample requires your OAuth credentials (client ID) ' +
-	  					'from the Google APIs console:\n' +
-	  					'    https://code.google.com/apis/console/#:access\n\n' +
-	  					'Find and replace YOUR_CLIENT_ID with your client ID.'
-	  					);
-	  				$(".default").hide();
-	  				$(".error").show();
-	  				$(".signed-in").hide();
-	  			}
-	  			else{
-	  				$(".default").show();
-	  				$(".error").hide();
-	  				$(".signed-in").hide();
-	  			}
+                if ($('g-signin2').innerHTML == undefined || $('meta')[0].content != '1063496487067-u6dorc4qjgmqh80dbabb1cjgnagos01q.apps.googleusercontent.com'){//$('meta')[0].content != '1063496487067-u6dorc4qjgmqh80dbabb1cjgnagos01q.apps.googleusercontent.com') {
+                    alert('This sample requires your OAuth credentials (client ID) ' +
+                    'from the Google APIs console:\n' +
+                    '    https://code.google.com/apis/console/#:access\n\n' +
+                    'Find and replace YOUR_CLIENT_ID with your client ID.'
+                    );
+                    $(".default").hide();
+                    $(".error").show();
+                    $(".signed-in").hide();
+                }else{
+                    alert($('g-signin2').innerHTML);
+                    $(".default").show();
+                    $(".error").hide();
+                    $(".signed-in").hide();
+                }	  			
 	  		});
 	  	</script>
 	  	<!-- Google API Platform Library -->
